@@ -35,8 +35,6 @@ class CatalogScreen extends StatelessWidget {
                 widthFactor: 2.2,
               ));
             })
-
-        //ProductCard(product: Product.products[0]),
         );
   }
 }

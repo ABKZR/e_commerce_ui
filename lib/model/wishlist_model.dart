@@ -1,0 +1,11 @@
+import 'package:e_commerce_ui/model/models.dart';
+import 'package:equatable/equatable.dart';
+
+class Wishlist extends Equatable {
+  final List<Product> products;
+
+  const Wishlist({this.products = const <Product>[]});
+
+  @override
+  List<Object?> get props => [products];
+}

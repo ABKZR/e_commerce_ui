@@ -4,7 +4,14 @@ import 'package:flutter/material.dart';
 class ProductCard extends StatelessWidget {
   final Product product;
   final double widthFactor;
-  const ProductCard({Key? key, required this.product, this.widthFactor = 2.5})
+  final bool isWishList;
+  final double leftPosition;
+  const ProductCard(
+      {Key? key,
+      required this.product,
+      this.isWishList = false,
+      this.leftPosition = 5,
+      this.widthFactor = 2.5})
       : super(key: key);
 
   @override
@@ -24,10 +31,26 @@ class ProductCard extends StatelessWidget {
             ),
           ),
           Positioned(
-            top: 65,
-            left: 5,
+              top: 60,
+              left: leftPosition,
+              child: Container(
+                width: MediaQuery.of(context).size.width / widthFactor -
+                    5 -
+                    leftPosition,
+                height: 80,
+                alignment: Alignment.bottomCenter,
+                decoration: BoxDecoration(
+                  color: Colors.black.withAlpha(50),
+                ),
+              )),
+          Positioned(
+            top: 60,
+            left: leftPosition + 5,
             child: Container(
-              width: MediaQuery.of(context).size.width / 2.5 - 10,
+              margin: EdgeInsets.only(top: 5),
+              width: MediaQuery.of(context).size.width / widthFactor -
+                  15 -
+                  leftPosition,
               height: 70,
               decoration: BoxDecoration(
                 color: Colors.black,
@@ -60,15 +83,29 @@ class ProductCard extends StatelessWidget {
                       ),
                     ),
                     Expanded(
-                        flex: 1,
-                        child: IconButton(
-                            onPressed: () {
-                              print(product.name);
-                            },
-                            icon: Icon(
-                              Icons.add_circle,
-                              color: Colors.white,
-                            )))
+                      flex: 1,
+                      child: IconButton(
+                        onPressed: () {
+                          print(product.name);
+                        },
+                        icon: Icon(
+                          Icons.add_circle,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
+                    isWishList?Expanded(
+                      flex: 1,
+                      child: IconButton(
+                        onPressed: () {
+                          print(product.name);
+                        },
+                        icon: Icon(
+                          Icons.delete,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ): SizedBox(),
                   ],
                 ),
               ),
