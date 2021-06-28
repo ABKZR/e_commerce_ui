@@ -1,5 +1,4 @@
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:e_commerce_ui/model/category_model.dart';
 import 'package:e_commerce_ui/model/models.dart';
 import 'package:e_commerce_ui/widgets/widgets.dart';
 import 'package:flutter/material.dart';
@@ -35,17 +34,20 @@ class HomeScreen extends StatelessWidget {
                     ))
                 .toList(),
           )),
-          SectionTitle(title: "Recommended",),
-          //product Card
-          Stack(
-            children: [
-              Container(
-                width: MediaQuery.of(context).size.width/2.5,
-                height: 150,
-                child: Image.network(Product.products[0].imageUrl),
-              ),
-            ],
-          )
+          SectionTitle(
+            title: "Recommended",
+          ),
+          ProductCarousel(
+              products: Product.products
+                  .where((product) => product.isRecommended)
+                  .toList()),
+          SectionTitle(
+            title: "Popular",
+          ),
+          ProductCarousel(
+              products: Product.products
+                  .where((product) => product.isPopular)
+                  .toList()),
         ],
       ),
     );
