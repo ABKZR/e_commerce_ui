@@ -16,7 +16,7 @@ class CartScreen extends StatelessWidget {
       appBar: CustomAppbar(
         title: "Cart",
       ),
-      bottomNavigationBar:  BottomAppBar(
+      bottomNavigationBar: BottomAppBar(
         color: Colors.black,
         child: Container(
           height: 70,
@@ -45,7 +45,7 @@ class CartScreen extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      'Add Rs. 500 for FREE Delivery',
+                      Cart().freeDeliveryString,
                       style: Theme.of(context).textTheme.headline5,
                     ),
                     ElevatedButton(
@@ -66,10 +66,16 @@ class CartScreen extends StatelessWidget {
                   ],
                 ),
                 SizedBox(height: 10),
-                CartProductCard(
-                  product: Product.products[0],
+                SizedBox(
+                  height: 400,
+                  child: ListView.builder(
+                      itemCount: Cart.products.length,
+                      itemBuilder: (context, index) {
+                        return CartProductCard(
+                          product: Cart.products[index],
+                        );
+                      }),
                 ),
-                CartProductCard(product: Product.products[1]),
               ],
             ),
             Column(
@@ -87,7 +93,7 @@ class CartScreen extends StatelessWidget {
                             'SUBTOTAL',
                             style: Theme.of(context).textTheme.headline5,
                           ),
-                          Text('Rs. 500',
+                          Text('Rs. ${Cart().subtotalString}',
                               style: Theme.of(context).textTheme.headline5),
                         ],
                       ),
@@ -101,7 +107,7 @@ class CartScreen extends StatelessWidget {
                             'DELIVERY FEE',
                             style: Theme.of(context).textTheme.headline5,
                           ),
-                          Text('Rs. 100',
+                          Text('Rs. ${Cart().deliveryFeeString}',
                               style: Theme.of(context).textTheme.headline5),
                         ],
                       ),
