@@ -25,8 +25,10 @@ class WishlistBloc extends Bloc<WishlistEvent, WishlistState> {
   Stream<WishlistState> _mapStartWishListToState() async* {
     yield WishlistLoading();
     try {
-      await Future<void>.delayed(Duration(seconds: 1));
-    } catch (_) {}
+      await Future<void>.delayed(Duration(milliseconds: 100));
+    } catch (e) {
+      print("error loading"+ e.toString());
+    }
   }
 
   Stream<WishlistState> _mapAddWishlistProductToState(
@@ -38,6 +40,7 @@ class WishlistBloc extends Bloc<WishlistEvent, WishlistState> {
             products: List.from(state.wishlist.products)..add(event.product),
           ),
         );
+        print("loaded");
       } catch (_) {}
     }
   }
