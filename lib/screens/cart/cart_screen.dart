@@ -139,7 +139,7 @@ class CartScreen extends StatelessWidget {
                                   .headline5!
                                   .copyWith(color: Colors.white),
                             ),
-                            Text('Rs. 600',
+                            Text('Rs. ${Cart().totalString}',
                                 style: Theme.of(context)
                                     .textTheme
                                     .headline5!

@@ -19,14 +19,19 @@ class Cart extends Equatable {
     if (subtotal >= 500) {
       return 'You have Free Delivery';
     } else {
-      double missing = 500 - subtotal;
+      double missing = 500.0 - subtotal;
       return 'Add Rs. ${missing.toStringAsFixed(2)} for Free Delivery';
     }
+  }
+
+  double total(subtotal, deliveryFee) {
+    return subtotal + deliveryFee(subtotal);
   }
 
   String get subtotalString => subtotal.toStringAsFixed(2);
   String get deliveryFeeString => deliveryFee(subtotal).toStringAsFixed(2);
   String get freeDeliveryString => freeDelivery(subtotal);
+  String get totalString => total(subtotal, deliveryFee).toStringAsFixed(2);
 
   static List<Product> products = [
     Product(
