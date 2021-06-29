@@ -20,17 +20,17 @@ class WishlistScreen extends StatelessWidget {
         title: "WishlistScreen",
       ),
       bottomNavigationBar: CustomNavigationBar(),
-      body: BlocBuilder<WishlistBloc, WishlistState>(
-        builder: (context, state) {
-          if (state is WishlistLoading) {
-            return Center(
-              child: CircularProgressIndicator(),
-            );
+      // body: BlocBuilder<WishlistBloc, WishlistState>(
+      //   builder: (context, state) {
+      //     if (state is WishlistLoading) {
+      //       return Center(
+      //         child: CircularProgressIndicator(),
+      //       );
             
-          }
+      //     }
           
-          if (state is WishlistLoaded) {
-            return GridView.builder(
+      //     if (state is WishlistLoaded) {
+          body:  GridView.builder(
               
                 itemCount: Product.products.length,
                 padding: EdgeInsets.symmetric(horizontal: 8, vertical: 16),
@@ -44,12 +44,12 @@ class WishlistScreen extends StatelessWidget {
                     leftPosition: 100,
                     isWishList: true,
                   ));
-                });
-          } else {
-            return Text("Something went wrong");
-          }
-        },
-      ),
+                }),
+        //   } else {
+        //     return Text("Something went wrong");
+        //   }
+        // },
+    
     );
   }
 }

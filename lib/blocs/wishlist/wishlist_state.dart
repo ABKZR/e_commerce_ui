@@ -11,7 +11,6 @@ class WishlistLoading extends WishlistState {}
 
 class WishlistLoaded extends WishlistState {
   final Wishlist wishlist;
-
   const WishlistLoaded({this.wishlist = const Wishlist()});
 
   @override
