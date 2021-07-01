@@ -17,7 +17,9 @@ class CatalogScreen extends StatelessWidget {
   final Category category;
   @override
   Widget build(BuildContext context) {
-    final List<Product> categoryProducts = Product.products.where((product) => product.category == category.name).toList();
+    final List<Product> categoryProducts = Product.products
+        .where((product) => product.category == category.name)
+        .toList();
     return Scaffold(
         appBar: CustomAppbar(
           title: category.name,
@@ -34,7 +36,6 @@ class CatalogScreen extends StatelessWidget {
                 product: categoryProducts[index],
                 widthFactor: 2.2,
               ));
-            })
-        );
+            }));
   }
 }
