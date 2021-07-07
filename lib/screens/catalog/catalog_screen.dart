@@ -33,6 +33,7 @@ class CatalogScreen extends StatelessWidget {
             itemBuilder: (BuildContext context, index) {
               return Center(
                   child: ProductCard(
+                   // removeProduct: Provider.of<WishlistController>(context).removeProduct,
                 product: categoryProducts[index],
                 widthFactor: 2.2,
               ));
