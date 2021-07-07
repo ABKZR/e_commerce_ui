@@ -66,7 +66,14 @@ class ProductScreen extends StatelessWidget {
                       'ADD TO CART',
                       style: Theme.of(context).textTheme.headline3,
                     )),
-              )
+              ),
+              ElevatedButton(
+                  style: ElevatedButton.styleFrom(primary: Colors.white),
+                  onPressed: () {},
+                  child: Text(
+                    'ADD TO CART',
+                    style: Theme.of(context).textTheme.headline3,
+                  ))
             ],
           ),
         ),
