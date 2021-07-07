@@ -1,17 +1,21 @@
+import 'package:e_commerce_ui/controller/wishlist_controller.dart';
 import 'package:e_commerce_ui/model/models.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class ProductCard extends StatelessWidget {
   final Product product;
   final double widthFactor;
   final bool isWishList;
   final double leftPosition;
-  const ProductCard(
+   ProductCard(
       {Key? key,
       required this.product,
       this.isWishList = false,
       this.leftPosition = 5,
-      this.widthFactor = 2.5})
+      this.widthFactor = 2.5}
+      
+      )
       : super(key: key);
 
   @override
@@ -94,18 +98,21 @@ class ProductCard extends StatelessWidget {
                         ),
                       ),
                     ),
-                    isWishList?Expanded(
-                      flex: 1,
-                      child: IconButton(
-                        onPressed: () {
-                          print(product.name);
-                        },
-                        icon: Icon(
-                          Icons.delete,
-                          color: Colors.white,
-                        ),
-                      ),
-                    ): SizedBox(),
+                    isWishList
+                        ? Expanded(
+                            flex: 1,
+                            child: IconButton(
+                              onPressed: () {
+                                
+                                Provider.of<WishlistController>(context,listen: false).removeProduct(product);
+                              },
+                              icon: Icon(
+                                Icons.delete,
+                                color: Colors.white,
+                              ),
+                            ),
+                          )
+                        : SizedBox(),
                   ],
                 ),
               ),
