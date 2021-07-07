@@ -66,7 +66,7 @@ class ProductScreen extends StatelessWidget {
                       'ADD TO CART',
                       style: Theme.of(context).textTheme.headline3,
                     )),
-              ),
+              )
               
             ],
           ),
