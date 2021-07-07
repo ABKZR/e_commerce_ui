@@ -1,9 +1,9 @@
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:e_commerce_ui/blocs/wishlist/wishlist_bloc.dart';
+import 'package:e_commerce_ui/controller/wishlist_controller.dart';
 import 'package:e_commerce_ui/model/models.dart';
 import 'package:e_commerce_ui/widgets/widgets.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:provider/provider.dart';
 
 class ProductScreen extends StatelessWidget {
   static const String routeName = '/product';
@@ -38,24 +38,21 @@ class ProductScreen extends StatelessWidget {
                   color: Colors.white,
                 ),
               ),
-              BlocBuilder<WishlistBloc, WishlistState>(
-                builder: (context, state) {
-                  return IconButton(
-                    onPressed: () {
-                      context.read<WishlistBloc>()
-                        ..add(AddWishlistProduct(product));
-
-                      final snackBar = SnackBar(
-                        content: Text('Added to your Wishlist'),
-                      );
-                      ScaffoldMessenger.of(context).showSnackBar(snackBar);
-                    },
-                    icon: Icon(
-                      Icons.favorite,
-                      color: Colors.white,
-                    ),
-                  );
-                },
+              Consumer<WishlistController>(
+                builder: (context, data, child)=>
+                 IconButton(
+                  onPressed: () {
+                    data.addProduct(product);
+                    final snackBar = SnackBar(
+                      content: Text('Added to your Wishlist'),
+                    );
+                    ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                  },
+                  icon: Icon(
+                    Icons.favorite,
+                    color: Colors.white,
+                  ),
+                ),
               ),
               ElevatedButton(
                   style: ElevatedButton.styleFrom(primary: Colors.white),

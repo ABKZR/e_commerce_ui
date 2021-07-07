@@ -1,20 +1,25 @@
 import 'package:equatable/equatable.dart';
 
+// ignore: must_be_immutable
 class Product extends Equatable {
+  final int id;
   final String name;
   final String category;
   final String imageUrl;
   final double price;
   final bool isRecommended;
   final bool isPopular;
-
+   int qty;
   Product(
-      {required this.name,
+      {required this.id,
+        required this.name,
       required this.category,
       required this.imageUrl,
       required this.price,
       required this.isRecommended,
-      required this.isPopular});
+      required this.isPopular,
+      this.qty =1
+      });
 
   @override
   List<Object?> get props =>
@@ -22,6 +27,7 @@ class Product extends Equatable {
 
   static List<Product> products = [
     Product(
+      id: 0,
         name: "Soft Drink 1",
         category: 'Soft Drink',
         imageUrl:'https://static01.nyt.com/images/2021/05/16/multimedia/16ah-mintdrinks/16ah-mintdrinks-mobileMasterAt3x.jpg',
@@ -29,6 +35,7 @@ class Product extends Equatable {
         isRecommended: true,
         isPopular: true),
     Product(
+      id: 1,
         name: "Soft Drink 2",
         category: 'Soft Drink',
         imageUrl:
@@ -37,6 +44,7 @@ class Product extends Equatable {
         isRecommended: true,
         isPopular: false),
     Product(
+      id: 2,
         name: "Soft Drink 3",
         category: 'Soft Drink',
         imageUrl:
@@ -45,6 +53,7 @@ class Product extends Equatable {
         isRecommended: false,
         isPopular: true),
     Product(
+      id: 3,
         name: "Soft Drink 4",
         category: 'Soft Drink',
         imageUrl:
@@ -53,6 +62,7 @@ class Product extends Equatable {
         isRecommended: true,
         isPopular: true),
     Product(
+      id: 4,
         name: "Mango Smoothie",
         category: 'Smoothies',
         imageUrl:
@@ -61,6 +71,7 @@ class Product extends Equatable {
         isRecommended: true,
         isPopular: true),
     Product(
+      id: 5,
         name: "Banana Smoothie",
         category: 'Smoothies',
         imageUrl:
@@ -69,6 +80,7 @@ class Product extends Equatable {
         isRecommended: false,
         isPopular: true),
     Product(
+      id: 6,
         name: "Chocolate Smoothie",
         category: 'Smoothies',
         imageUrl:
@@ -77,6 +89,7 @@ class Product extends Equatable {
         isRecommended: false,
         isPopular: true),
     Product(
+      id: 7,
         name: "Water",
         category: 'Water',
         imageUrl:

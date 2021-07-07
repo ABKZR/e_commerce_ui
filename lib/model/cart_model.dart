@@ -35,6 +35,7 @@ class Cart extends Equatable {
 
   static List<Product> products = [
     Product(
+      id: 0,
         name: "Soft Drink 1",
         category: 'Soft Drink',
         imageUrl:
@@ -43,6 +44,7 @@ class Cart extends Equatable {
         isRecommended: true,
         isPopular: true),
     Product(
+     id: 1,
         name: "Soft Drink 2",
         category: 'Soft Drink',
         imageUrl:
@@ -51,6 +53,7 @@ class Cart extends Equatable {
         isRecommended: true,
         isPopular: false),
     Product(
+      id: 2,
         name: "Soft Drink 3",
         category: 'Soft Drink',
         imageUrl:
