@@ -67,6 +67,7 @@ class ProductScreen extends StatelessWidget {
                       style: Theme.of(context).textTheme.headline3,
                     )),
               )
+              ),
             ],
           ),
         ),
